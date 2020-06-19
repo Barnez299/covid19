@@ -1,2 +1,6 @@
-# Covid19
-Covid19 Website
+# Covid19 Website
+Original Youtube contribution:
+https://www.youtube.com/watch?v=BzUFQDP8B28
+
+Link to Code Explained youtube channel:
+https://www.youtube.com/channel/UC8n8ftV94ZU_DJLOLtrpORA/playlists
