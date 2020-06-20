@@ -13,13 +13,13 @@ select all inner HTML classes and create const var:
 
 --------------------------------------------------*/
 
-const country_name_element = document.querySelector(".country.name");
-const total_cases_element = document.querySelector(".total-cases.value");
-const new_cases_element = document.querySelector(".total-cases.new-value");
-const recovered_element = document.querySelector(".recovered.value");
-const new_recovered_element = document.querySelector(".recovered.new-value");
-const deaths_element = document.querySelector(".deaths.value");
-const new_deaths_element = document.querySelector(".death.new-value");
+const country_name_element = document.querySelector(".country .name");
+const total_cases_element = document.querySelector(".total-cases .value");
+const new_cases_element = document.querySelector(".total-cases .new-value");
+const recovered_element = document.querySelector(".recovered .value");
+const new_recovered_element = document.querySelector(".recovered .new-value");
+const deaths_element = document.querySelector(".deaths .value");
+const new_deaths_element = document.querySelector(".death .new-value");
 
 
 /* STEP 2 -----------------------------------------
@@ -72,9 +72,49 @@ function fetchData(user_country) {
         })
 
     .then(data => {
-        console.log(data);
+            dates = Object.keys(data);
 
-    })
+            dates.forEach(date => {
+                let DATA = data[date];
+
+                app_data.push(DATA);
+                cases_list.push(parseInt(DATA.total_cases.replace(/,/g, "")));
+                recovered_list.push(parseInt(DATA.total_recovered.replace(/,/g, "")));
+                deaths_list.push(parseInt(DATA.total_deaths.replace(/,/g, "")));
+            })
+        })
+        .then(() => {
+            updateUI();
+        })
+        .catch(error => {
+            alert(error);
+        })
 }
 
+
+
 fetchData(user_country);
+
+// CREATE UPDATE UI FUNCTION USED TO UPDATE THE STATISTICS AND UPDATE THE CHART
+
+function updateUI() {
+    updateStats();
+    // axesLinearChart();
+}
+
+function updateStats() {
+    let last_entry = app_data[app_data.length - 1];
+    let before_last_entry = app_data[app_data.length - 2];
+
+    country_name_element.innerHTML = last_entry.country_name;
+    total_cases_element.innerHTML = last_entry.total_cases || 0;
+    new_cases_element.innerHTML = `+ ${last_entry.new_cases || 0}`;
+
+    recovered_element.innerHTML = last_entry.total_recovered || 0;
+    new_recovered_element.innerHTML = `+ ${parseInt(last_entry.total_recovered.replace(/,/g, "")) - parseInt(before_last_entry.total_recovered.replace(/,/g, ""))}`;
+
+    deaths_element.innerHTML = last_entry.total_deaths;
+    new_deaths_element.innerHTML = ` + ${last_entry.new_deaths|| 0}`;
+
+
+}
