@@ -37,11 +37,6 @@ html {
     letter-spacing: 0.015em;
 }
 
-
-/* body {
-    margin-top: 1em;
-} */
-
 .hide {
     display: none;
 }
@@ -279,6 +274,33 @@ main {
 
 /* SCROLL BAR */
 
+.country-list::-webkit-scrollbar {
+    width: 12px;
+}
+
+
+/* Track */
+
+.country-list::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(255, 0, 0, 0.8);
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+
+
+/* Handle */
+
+.country-list::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: rgba(255, 0, 0, 0.8);
+    -webkit-box-shadow: inset 0 0 6px rgba(255, 0, 0, 0.8);
+}
+
+.country-list::-webkit-scrollbar-thumb:window-inactive {
+    background: rgba(255, 0, 0, 0.4);
+}
+
 
 /* ---------------------------------------------- */
 
@@ -288,6 +310,30 @@ main {
 
 /* ---------------------------------------------- */
 
+footer {
+    max-width: 1200px;
+    height: 60px;
+    margin: 0 auto;
+    background-color: #6a149b;
+}
+
+.footer-container {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.copyright {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.copyright p {
+    color: white;
+}
+
 
 /* ---------------------------------------------- */
 
@@ -296,3 +342,11 @@ main {
 
 
 /* ---------------------------------------------- */
+
+@media screen and (max-width:600px) {
+    .latest-report {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
