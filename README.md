@@ -12,3 +12,9 @@ Github Repo: https://github.com/CodeExplainedRepo/COVID-19_TRACKER_HTML_CSS_JAVA
 
 Link to geo-plugin website used in tutorial:
 https://www.geoplugin.com/examples
+
+
+## Notes on improving code:
+-- Some data points are empty i.e. Null - use of json stringify methods to improve code
+-- Do some homework on how to Parse Json Data Null or NAN
+-- Review Code in app.js
